@@ -1,0 +1,10 @@
+/* docs/stylesheets/extra.css */
+
+body {
+    font-family: "Inter", sans-serif;
+    line-height: 1.4;
+  }
+  h1, h2, h3 {
+    margin-top: 1.4em;
+    margin-bottom: 0.4em;
+  }
