@@ -1,0 +1,25 @@
+site_name: Elektripaigaldiste Projekteerimise Juhend
+theme:
+  name: material
+  palette:
+    primary: green
+    accent: green
+  features:
+    - navigation.tabs
+    - navigation.indexes
+nav:
+  - Sissejuhatus: 1_Sissejuhatus/index.md
+  - Projekteerimise põhimõtted: 2_Projekteerimine/index.md
+  - Dokumentatsioon: 3_Dokument/index.md
+  - Tugevvool:
+      - Kaabliteed: 4_Tugevvool/4.4_Kaabliteed.md
+  - BIM: 7_BIM/index.md
+  - Kvaliteet: 8_Kvaliteet/index.md
+  - Lisad: 9_Lisad/index.md
+markdown_extensions:
+  - toc:
+      permalink: true
+  - admonition
+  - footnotes
+plugins:
+  - search
