@@ -1,4 +1,5 @@
 site_name: Elektripaigaldiste Projekteerimise Juhend
+site_url: https://dmitrig372.github.io/ElektriJuhend/
 theme:
   name: material
   palette:
@@ -7,6 +8,7 @@ theme:
   features:
     - navigation.tabs
     - navigation.indexes
+
 nav:
   - Sissejuhatus: 1_Sissejuhatus/index.md
   - Projekteerimise põhimõtted: 2_Projekteerimine/index.md
@@ -20,10 +22,12 @@ nav:
   - BIM: 7_BIM/index.md
   - Kvaliteet: 8_Kvaliteet/index.md
   - Lisad: 9_Lisad/index.md
+
 markdown_extensions:
   - toc:
       permalink: true
   - admonition
   - footnotes
+
 plugins:
   - search
