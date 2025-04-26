@@ -13,13 +13,18 @@ theme:
     - navigation.sections
 
 nav:
-  - Sissejuhatus:
+  - "1. Sissejuhatus":
       - "1.1 Juhendi Eesmärk ja Käsitlusala": 1_Sissejuhatus/1.1_Juhendi_Eesmärk_ja_Käsitlusala.md
       - "1.2 Juhendi Kasutamine": 1_Sissejuhatus/1.2_Juhendi_Kasutamine.md
       - "1.3 Terminid ja Määratlused": 1_Sissejuhatus/1.3_Terminid_ja_Määratlused.md
       - "1.4 Normatiivsed Viited": 1_Sissejuhatus/1.4_Normatiivsed_Viited.md
       - "1.5 Vastutus ja Pädevus": 1_Sissejuhatus/1.5_Vastutus_ja_Pädevus.md
-  - Projekteerimise põhimõtted: 2_Projekteerimine/index.md
+  - "2. Projekteerimise põhimõtted":
+      - "2.1 Projek­teerimise Etapid": 2_Projekteerimine/2.1_Projekteerimise_Etapid.md
+      - "2.2 Lähteülesanne ja Lähteandmed": 2_Projekteerimine/2.2_Lähteülesanne_ja_Lähteandmed.md
+      - "2.3 Koostöö Teiste Osapooltega": 2_Projekteerimine/2.3_Koostöö_Teiste_Osapooltega.md
+      - "2.4 Riskianalüüs ja Ohutus Projek­teerimises": 2_Projekteerimine/2.4_Riskianalüüs_ja_Ohutus_Projekteerimises.md
+  
   - Dokumentatsioon: 3_Dokument/index.md
   - Tugevvool:
       - Kaabliteed: 4_Tugevvool/4.4_Kaabliteed.md
