@@ -10,12 +10,29 @@ theme:
   features:
     - navigation.tabs
     - navigation.indexes
+    - navigation.sections
     - navigation.breadcrumbs
     - navigation.top
     - navigation.tracking
 
 nav:
-  - Sissejuhatus: 1_Sissejuhatus/index.md
+  - Sissejuhatus:
+      - "1.1 Juhendi Eesmärk ja Käsitlusala": 1_Sissejuhatus/1.1_Juhendi_Eesmärk_ja_Käsitlusala.md
+      - "1.1.1 Miks see juhend on koostatud?": 1_Sissejuhatus/1.1.1_Miks_see_juhend_on_koostatud.md
+      - "1.1.2 Kellele juhend on mõeldud?": 1_Sissejuhatus/1.1.2_Kellele_juhend_on_mõeldud.md
+      - "1.1.3 Mida juhend käsitleb?": 1_Sissejuhatus/1.1.3_Mida_juhend_käsitleb.md
+      - "1.2 Juhendi Kasutamine": 1_Sissejuhatus/1.2_Juhendi_Kasutamine.md
+      - "1.2.1 Struktuur ja ülesehitus": 1_Sissejuhatus/1.2.1_Struktuur_ja_ülesehitus.md
+      - "1.2.2 Nõuete tõlgendamine (miinimumnõuded vs parimad praktikad)": 1_Sissejuhatus/1.2.2_Nõuete_tõlgendamine.md
+      - "1.3 Terminid ja Määratlused": 1_Sissejuhatus/1.3_Terminid_ja_Määratlused.md
+      - "1.3.1 Üldised ehitusterminid": 1_Sissejuhatus/1.3.1_Üldised_ehitusterminid.md
+      - "1.3.2 Elektripaigaldiste spetsiifilised terminid": 1_Sissejuhatus/1.3.2_Elektripaigaldiste_spetsiifilised_terminid.md
+      - "1.3.3 Lühendid": 1_Sissejuhatus/1.3.3_Lühendid.md
+      - "1.4 Normatiivsed Viited": 1_Sissejuhatus/1.4_Normatiivsed_Viited.md
+      - "1.5 Vastutus ja Pädevus": 1_Sissejuhatus/1.5_Vastutus_ja_Pädevus.md
+      - "1.5.1 Projekteerija vastutus": 1_Sissejuhatus/1.5.1_Projekteerija_vastutus.md
+      - "1.5.2 Peaprojekteerija roll": 1_Sissejuhatus/1.5.2_Peaprojekteerija_roll.md
+      - "1.5.3 Nõuded pädevusele": 1_Sissejuhatus/1.5.3_Nõuded_pädevusele.md
   - Projekteerimise põhimõtted: 2_Projekteerimine/index.md
   - Dokumentatsioon: 3_Dokument/index.md
   - Tugevvool:
