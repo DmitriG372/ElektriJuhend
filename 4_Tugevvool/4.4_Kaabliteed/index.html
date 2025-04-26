@@ -69,11 +69,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#44-kaabliteed-plaanid-tuubid-markeerimine" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -471,8 +466,6 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
-        
-      
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -581,8 +574,6 @@
   
   
   
-    
-  
   
 </nav>
                   </div>
@@ -598,9 +589,247 @@
 
 
 
-<!-- Versioon 1.0 – 15.04.2025 -->
-<h1 id="44-kaabliteed-plaanid-tuubid-markeerimine">4.4 Kaabliteed (plaanid, tüübid, markeerimine)<a class="headerlink" href="#44-kaabliteed-plaanid-tuubid-markeerimine" title="Permanent link">&para;</a></h1>
-<p><em>(Sisu imporditakse hiljem DOCX-ist.)</em></p>
+  <h1>Kaabliteed</h1>
+
+<p><strong>4.4. Kaabliteed (plaanid, tüübid, markeerimine)</strong></p>
+<p>Versioon: 1.0</p>
+<p>Kuupäev: 15.04.2025</p>
+<p><strong>1. Käsitlusala</strong></p>
+<p>Käesolev kaart kirjeldab nõudeid <strong>kaabliteede
+tasapinnaplaanide</strong> koostamisele elektripaigaldise projektides (tugev-
+ja nõrkvool). See hõlmab nii riputatavaid (laealused, seintel) kui ka
+põrandaaluseid kaabliteid. Eesmärk on tagada jooniste selgus,
+informatiivsus ja vastavus standarditele ning heale tavale.</p>
+<ul>
+<li><strong>Asjakohased EHR koodid:</strong> 5-1100 (Põrandaalused kaabliteed), 5-1200
+  (Riputatavad kaabliteed)</li>
+</ul>
+<p><strong>2. Seotud dokumendid ja viited</strong></p>
+<ul>
+<li>
+<p><strong>Standardid:</strong></p>
+</li>
+<li>
+<p>EVS 932:2017 Ehitusprojekt</p>
+</li>
+<li>
+<p>Määrus \"Nõuded ehitusprojektile\"</p>
+</li>
+<li>
+<p>EVS-EN ISO 5457: Jooniste vormistus</p>
+</li>
+<li>
+<p>EVS-EN ISO 7200: Kirjanurk (ja teised vormistusstandardid)</p>
+</li>
+<li>
+<p>EVS-EN ISO 3098, EVS-EN ISO 7083: Tekst joonistel (ja teised
+    vormistusstandardid)</p>
+</li>
+<li>
+<p>EVS-EN ISO 13567 (või vastav kehtiv standard): CAD kihid</p>
+</li>
+<li>
+<p><strong>Juhendid:</strong></p>
+</li>
+<li>
+<p>MKM Juhendmaterjal - Ehitusprojekti dokumentide digitaalse
+    vormistamise nõuded</p>
+</li>
+<li>
+<p>Käesoleva juhendi peatükid: 3 (Dokumentatsiooni vormistus), 7 (BIM
+    Nõuded), Lisa X (Tingmärgid).</p>
+</li>
+</ul>
+<p><strong>3. Üldnõuded Vormistusele</strong></p>
+<ul>
+<li>
+<p><strong>Mõõtkava:</strong> Üldjuhul 1:100. Kaabliteede ja kilpide
+  teeninduspiirkondade üldplaanid võivad olla 1:200. Suure
+  detailsusvajadusega alad (nt alajaamad) 1:50 Mõõtkava näidata
+  kirjanurgas.</p>
+</li>
+<li>
+<p><strong>Formaat:</strong> Standardne ISO A-seeria (A3, A2, A1). Võib kasutada
+  pikendatud formaate (A3L jne), kui kõrgus vastab standardile</p>
+</li>
+<li>
+<p><strong>Layout:</strong> Peab sisaldama graafilist osa, tingmärkide legendi ja
+  standardset kirjanurka [ Image x.x.x]. Orienteeritus lugemiseks
+  vasakult paremale.</p>
+</li>
+<li>
+<p><strong>Kirjanurk:</strong> Peab vastama EVS-EN ISO 7200 nõuetele ja sisaldama
+  vähemalt juhendis määratletud miinimuminfot [Image x.x.x].</p>
+</li>
+<li>
+<p><strong>Fondid:</strong> Kasutada levinud platvormiüleseid fonte (nt ISOCPEUR,
+  Arial). Teksti kõrgus (mõõtkavast sõltumata) 2.0-2.5 mm.</p>
+</li>
+<li>
+<p><strong>Kihid (Layers):</strong> Kasutada standardset kihisüsteemi (nt ISO 13567).
+  Eraldada kihiti tugevvoolu (EL), nõrkvoolu (EN) ja tulekindlad (TK)
+  kaabliteed.</p>
+</li>
+<li>
+<p><strong>Alusplaanid:</strong> Lisada Xref-ina (mitte kopeerida joonisesse).</p>
+</li>
+<li>
+<p><strong>Failinimed:</strong> Vastavalt MKM juhendile ja käesoleva juhendi peatükile
+  3.2.</p>
+</li>
+<li>
+<p><strong>Väljund:</strong> Vektorkujul PDF-fail, kus on säilinud kihtide info ja
+  teksti selekteerimise võimalus.</p>
+</li>
+</ul>
+<p><strong>4. Sisu Nõuded Staadiumite Kaupa</strong></p>
+<hr />
+<p><strong>Staadium</strong>   <strong>Sisu Nõuded</strong></p>
+<hr />
+<p><strong>EP</strong>         <strong>Eelprojekt</strong> (Fookus: põhimõtted, ruumivajadus)</p>
+<pre><code>             \* Näidata **põhimagistraalide** (nii horisontaalsete kui
+             vertikaalsete) asukohad ja ligikaudsed mõõtmed/ruumivajadus.
+
+             \* Määratleda **elektri- ja nõrkvoolu tehnoruumide** (sh
+             kilbiruumid, serveriruumid) ning **šahtide** asukohad ja
+             ligikaudsed suurused koostöös arhitektiga.
+
+             \* Näidata **jaotuskeskuste** (pea-, korruse-) põhimõttelised
+             asukohad.
+
+             \* Määratleda kaabliteede **tüübid** üldiselt (nt riputatavad,
+             põrandaalused).
+</code></pre>
+<p><strong>PP</strong>         <strong>Põhiprojekt</strong> (Fookus: detailsus, süsteemide eristamine,
+                 koordineerimine)</p>
+<pre><code>             \* **Riputatavad kaabliteed (EHR 5-1200):** Näidata kõik
+             kaabliredelid, -rennid, karbikud, tulekindlad teed. Eristada
+             tüübid (nt kaetud/katmata) ja süsteemid (EL/EN/TK) mustri
+             ja/või värviga \[Source 4312, Image 2\]. Markeerida lõigud
+             (Tüüp / Laius / Esialgne kõrgus) \[Source 4313, Image 3\].
+             Näidata ka lattliinid \[Source 4324\].
+
+             \* **Põrandaalused kaabliteed (EHR 5-1100):** Näidata
+             paigaldustorud, põrandakarbid, põrandakanalid, tõstetud
+             põranda alused teed.
+
+             \* **Jaotuskeskused:** Näidata täpsed asukohad, tüübid
+             (TAVA/GEN/UPS värvidega) ja teeninduspiirkonnad.
+
+             \* **Avad:** Esitada avade ülesanne konstruktorile. Näidata
+             vajalikud läbiviigud.
+
+             \* **Tuleohutustsoonid:** Vajadusel näidata TT-tsoonid.
+</code></pre>
+<p><strong>TP</strong>         <strong>Tööprojekt</strong> (Fookus: ehituslik täpsus, paigaldusinfo)</p>
+<pre><code>             \* **Kõrgused ja Mõõdud:** Näidata **täpsed
+             paigalduskõrgused** (alumine serv) kõikidele kaabliteedele, sh
+             kõrguse muutumisel. Lisada mõõdud põrandakarpidele ja muudele
+             väljaviikudele. Määratleda kilpide täpsed gabariidid ja
+             teenindusalade mõõtmed. Üldjuhul mõõtahelaid seadmetele ei
+             lisata, v.a erijuhtudel.
+
+             \* **Kaabeldus:** Näidata **põhimagistraalide
+             kaablipakid** (cable pack) kaabliteedel.
+
+             \* **Sõlmed ja Detailid:** Vajadusel lisada spetsiifilisi
+             paigaldussõlmi või detaile, eriti keerukamate lahenduste või
+             liitumiste puhul.
+
+             \* **Avad:** Näidata lõplikud ehituslikud avad, mis tuleb
+             tekitada.
+</code></pre>
+<hr />
+<p><strong>5. Markeerimine ja Tähistus</strong></p>
+<ul>
+<li>
+<p><strong>Kaabliteed:</strong> Iga kaablitee lõik (eriti riputatav) peab olema
+  varustatud viitega/tähisega, mis sisaldab vähemalt:</p>
+</li>
+<li>
+<p><strong>Kaablitee tüüp:</strong> (nt redel C1, renn C3, karbik K1, TK-tee jne)
+    [Image x.x.x]</p>
+</li>
+<li>
+<p><strong>Süsteem:</strong> (nt EL, EN, TK - võib olla ka värvi/mustriga)</p>
+</li>
+<li>
+<p><strong>Laius (w):</strong> millimeetrites (nt w=300)</p>
+</li>
+<li>
+<p><strong>Paigalduskõrgus (h):</strong> Alumise serva absoluutkõrgus või kõrgus
+    nullist (nt h=2400). Näidata kõrguse muutuskohtades.</p>
+</li>
+<li>
+<p><em>Näide viitest:</em> Redel (C1) / EL / w=300 / h=2400</p>
+</li>
+<li>
+<p><strong>Jaotuskeskused:</strong> Tähistada vastavalt projektis kasutatavale
+  süsteemile (nt JK1, PK, UPS-JK2). Eristada värviga tava-, gen.- ja
+  UPS-toite kilbid.</p>
+</li>
+<li>
+<p><strong>Tingmärgid:</strong> Kasutada standardseid või projektis defineeritud
+  tingmärke. Kõik kasutatud tingmärgid peavad olema esitatud joonise
+  legendis.</p>
+</li>
+</ul>
+<p><strong>6. BIM Nõuded</strong></p>
+<ul>
+<li>
+<p>Kaabliteede modelleerimisel järgida juhendi peatükis 7 toodud nõudeid
+  (LOD vastavalt staadiumile, parameetrid, kihid, ristumiste kontroll).</p>
+</li>
+<li>
+<p>Kaabliteed on oluline osa eriosade koordineerimisel ja ristumiste
+  vältimisel BIM mudelis.</p>
+</li>
+</ul>
+<p><strong>7. Näited</strong></p>
+<ul>
+<li>Näide riputatavate kaabliteede markeerimisest [Image 3].</li>
+</ul>
+<blockquote>
+<p><img alt="Picture" src="../../_assets/media/image1.jpeg" />{width="5.089150262467192in"
+height="2.1166666666666667in"}</p>
+</blockquote>
+<ul>
+<li>Näide süsteemide eristamisest mustritega [Image 2].</li>
+</ul>
+<blockquote>
+<p><img alt="Picture" src="../../_assets/media/image2.jpeg" />{width="5.088888888888889in"
+height="3.1041666666666665in"}</p>
+</blockquote>
+<ul>
+<li>Näide kilbi teeninduspiirkonna ja tähistuse kohta [Image 5].</li>
+</ul>
+<blockquote>
+<p><img alt="Picture" src="../../_assets/media/image3.png" />{width="5.447916666666667in"
+height="4.4375in"}</p>
+</blockquote>
+<ul>
+<li>Näide kaablipakkide kujutamisest (TP) [Image 6].</li>
+</ul>
+<p><strong>8. Märkused ja Head Tavad</strong></p>
+<ul>
+<li>
+<p>Kaabliteede planeerimisel arvestada teiste tehnosüsteemide (KVJVK,
+  vesi-kanal) paiknemisega ja ruumivajadusega. Koostöö teiste eriosade
+  projekteerijatega on kriitilise tähtsusega.</p>
+</li>
+<li>
+<p>Kaaluda kaabliteede täituvuse ja kandevõime arvutamist/hindamist
+  keerukamate objektide puhul (eriti PP/TP staadiumis).</p>
+</li>
+<li>
+<p>Tööprojektis võib olla otstarbekas näidata kaablite järjestus
+  kaabliteedel suuremate magistraalide puhul.</p>
+</li>
+<li>
+<p>Dokumenteerida ja kooskõlastada kõik avade ülesanded konstruktoriga
+  õigeaegselt.</p>
+</li>
+</ul>
 
 
 
