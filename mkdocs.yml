@@ -3,11 +3,16 @@ site_url: https://dmitrig372.github.io/ElektriJuhend/
 theme:
   name: material
   palette:
-    primary: green
-    accent: green
+    primary:
+      main: "#2E7D32"
+    accent:
+      main: "#607D8B"
   features:
     - navigation.tabs
     - navigation.indexes
+    - navigation.breadcrumbs
+    - navigation.top
+    - navigation.tracking
 
 nav:
   - Sissejuhatus: 1_Sissejuhatus/index.md
@@ -31,3 +36,9 @@ markdown_extensions:
 
 plugins:
   - search
+
+extra_css:
+  - stylesheets/extra.css
+
+extra:
+  version: "v1.0 – 15.04.2025"
