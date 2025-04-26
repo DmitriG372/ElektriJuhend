@@ -24,17 +24,22 @@ nav:
       - "2.2 Lähteülesanne ja Lähteandmed": 2_Projekteerimine/2.2_Lähteülesanne_ja_Lähteandmed.md
       - "2.3 Koostöö Teiste Osapooltega": 2_Projekteerimine/2.3_Koostöö_Teiste_Osapooltega.md
       - "2.4 Riskianalüüs ja Ohutus Projek­teerimises": 2_Projekteerimine/2.4_Riskianalüüs_ja_Ohutus_Projekteerimises.md
-  
-  - Dokumentatsioon: 3_Dokument/index.md
-  - Tugevvool:
+  - 3. Dokumentatsioon: 3_Dokument/index.md
+  - 4. Tugevvool:
       - Kaabliteed: 4_Tugevvool/4.4_Kaabliteed.md
-  - Nõrkvool:
+  - 5. Nõrkvool:
       - Nõrkvoolu ülevaade: 5_Norkvool/index.md
-  - Automaatika:
+  - 6. Automaatika:
       - Automaatika ülevaade: 6_Automaatika/index.md
-  - BIM: 7_BIM/index.md
-  - Kvaliteet: 8_Kvaliteet/index.md
-  - Lisad: 9_Lisad/index.md
+  - "7. BIM":
+      - "7.1 Üldpõhimõtted ja Terminoloogia": 7_BIM/7.1_Üldpõhimõtted_ja_Terminoloogia.md
+      - "7.2 Mudeli Detailsusaste (LOD) Staadiumite Kaupa": 7_BIM/7.2_Mudeli_Detailsusaste_LOD_Staadiumite_Kaupa.md
+      - "7.3 Modelleerimise Standardid": 7_BIM/7.3_Modelleerimise_Standardid.md
+      - "7.4 Tarkvara ja Failivormingud (IFC jm)": 7_BIM/7.4_Tarkvara_ja_Failivormingud_IFC_jm.md
+      - "7.5 Koostöö ja Koordineerimine Mudelis": 7_BIM/7.5_Koostöö_ja_Koordineerimine_Mudelis.md
+      - "7.6 Mudelipõhised Väljundid": 7_BIM/7.6_Mudelipõhised_Väljundid.md
+  - 8. Kvaliteet: 8_Kvaliteet/index.md
+  - 9. Lisad: 9_Lisad/index.md
 
 markdown_extensions:
   - toc:
