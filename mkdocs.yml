@@ -13,6 +13,10 @@ nav:
   - Dokumentatsioon: 3_Dokument/index.md
   - Tugevvool:
       - Kaabliteed: 4_Tugevvool/4.4_Kaabliteed.md
+  - Nõrkvool:
+      - Nõrkvoolu ülevaade: 5_Norkvool/index.md
+  - Automaatika:
+      - Automaatika ülevaade: 6_Automaatika/index.md
   - BIM: 7_BIM/index.md
   - Kvaliteet: 8_Kvaliteet/index.md
   - Lisad: 9_Lisad/index.md
