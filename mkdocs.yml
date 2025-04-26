@@ -11,9 +11,6 @@ theme:
     - navigation.tabs
     - navigation.indexes
     - navigation.sections
-    - navigation.breadcrumbs
-    - navigation.top
-    - navigation.tracking
 
 nav:
   - Sissejuhatus:
