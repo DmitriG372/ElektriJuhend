@@ -1,3 +1,8 @@
+---
+home: true
+toc: false
+---
+
 # Elektripaigaldiste Projekteerimise Juhend
 
 Tere tulemast Elektripaigaldiste Projekteerimise Juhendi juurde!  

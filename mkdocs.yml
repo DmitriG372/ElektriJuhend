@@ -2,7 +2,6 @@ site_name: Elektripaigaldiste Projekteerimise Juhend
 site_url: https://dmitrig372.github.io/ElektriJuhend/
 theme:
   name: material
-  custom_dir: overrides
   language: et
   palette:
     - scheme: default
