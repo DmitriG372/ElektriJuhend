@@ -2,11 +2,25 @@ site_name: Elektripaigaldiste Projekteerimise Juhend
 site_url: https://dmitrig372.github.io/ElektriJuhend/
 theme:
   name: material
+  custom_dir: overrides
+  language: et
   palette:
-    primary:
-      main: "#2E7D32"
-    accent:
-      main: "#607D8B"
+    - scheme: default
+      primary:
+        main: "#2E7D32"
+      accent:
+        main: "#607D8B"
+      toggle:
+        icon: material/weather-night
+        name: Lülita tumedasse režiimi
+    - scheme: slate
+      primary:
+        main: "#2E7D32"
+      accent:
+        main: "#607D8B"
+      toggle:
+        icon: material/weather-sunny
+        name: Lülita heledasse režiimi
   features:
     - navigation.tabs
     - navigation.indexes
@@ -24,12 +38,12 @@ nav:
       - "2.2 Lähteülesanne ja Lähteandmed": 2_Projekteerimine/2.2_Lähteülesanne_ja_Lähteandmed.md
       - "2.3 Koostöö Teiste Osapooltega": 2_Projekteerimine/2.3_Koostöö_Teiste_Osapooltega.md
       - "2.4 Riskianalüüs ja Ohutus Projek­teerimises": 2_Projekteerimine/2.4_Riskianalüüs_ja_Ohutus_Projekteerimises.md
-  - 3. Dokumentatsioon: 3_Dokument/index.md
-  - 4. Tugevvool:
+  - "3. Dokumentatsioon": 3_Dokument/index.md
+  - "4. Tugevvool":
       - Kaabliteed: 4_Tugevvool/4.4_Kaabliteed.md
-  - 5. Nõrkvool:
+  - "5. Nõrkvool":
       - Nõrkvoolu ülevaade: 5_Norkvool/index.md
-  - 6. Automaatika:
+  - "6. Automaatika":
       - Automaatika ülevaade: 6_Automaatika/index.md
   - "7. BIM":
       - "7.1 Üldpõhimõtted ja Terminoloogia": 7_BIM/7.1_Üldpõhimõtted_ja_Terminoloogia.md
@@ -38,8 +52,8 @@ nav:
       - "7.4 Tarkvara ja Failivormingud (IFC jm)": 7_BIM/7.4_Tarkvara_ja_Failivormingud_IFC_jm.md
       - "7.5 Koostöö ja Koordineerimine Mudelis": 7_BIM/7.5_Koostöö_ja_Koordineerimine_Mudelis.md
       - "7.6 Mudelipõhised Väljundid": 7_BIM/7.6_Mudelipõhised_Väljundid.md
-  - 8. Kvaliteet: 8_Kvaliteet/index.md
-  - 9. Lisad: 9_Lisad/index.md
+  - "8. Kvaliteet": 8_Kvaliteet/index.md
+  - "9. Lisad": 9_Lisad/index.md
 
 markdown_extensions:
   - toc:
