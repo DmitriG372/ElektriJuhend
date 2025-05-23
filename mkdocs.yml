@@ -46,6 +46,7 @@ nav:
       - "3.6 Spetsifikatsioonid ja Loetelud": 3_Dokument/3.6_Spetsifikatsioonid_ja_Loetelud.md
       - "3.7 Arvutused": 3_Dokument/3.7_Arvutused.md
   - "4. Tugevvool":
+      - Üldskeemid: 4_Tugevvool/4.2_Yldskeemid.md
       - Kilbiskeemid: 4_Tugevvool/4.3_Kilbiskeemid.md
       - Kaabliteed: 4_Tugevvool/4.4_Kaabliteed.md
       - Valgustuspaigaldised: 4_Tugevvool/4.5_Valgustuspaigaldised.md
