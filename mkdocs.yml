@@ -55,6 +55,7 @@ nav:
   - "5. Nõrkvool":
       - Nõrkvoolu ülevaade: 5_Norkvool/index.md
   - "6. Automaatika":
+      - "6.1 Automaatika": 6_Automaatika/6.1_Automaatika.md
       - Automaatika ülevaade: 6_Automaatika/index.md
   - "7. BIM":
       - "7.1 Üldpõhimõtted ja Terminoloogia": 7_BIM/7.1_Üldpõhimõtted_ja_Terminoloogia.md
