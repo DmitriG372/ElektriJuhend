@@ -53,11 +53,23 @@ nav:
       - Jõupaigaldised: 4_Tugevvool/4.6_Jõupaigaldis.md
       - Maandus ja piksekaitse: 4_Tugevvool/4.7_Maandus_piksekaitse.md
   - "5. Nõrkvool":
-      - "5.1 Nõrkvoolusüsteemide Ülevaade": 5_Norkvool/5.1_Norkvool.md
-      - Nõrkvoolu ülevaade: 5_Norkvool/index.md
+      - "5.1 Ülevaade": 5_Norkvool/5.1_Norkvool.md
+      - "5.2 Üldnõuded ja standardid": 5_Norkvool/5.2_Yldnõuded_Standardid.md
+      - "5.3 Andmeside": 5_Norkvool/5.3_Andmeside.md
+      - "5.4 Sidevõrgud": 5_Norkvool/5.4_Sidevorgud.md
+      - "5.5 Antennisüsteemid": 5_Norkvool/5.5_Antennisysteemid.md
+      - "5.6 Helindussüsteemid": 5_Norkvool/5.6_Helindussysteemid.md
+      - "5.7 Turvasüsteemid": 5_Norkvool/5.7_Turvasüsteemid.md
+      - "5.8 ATS": 5_Norkvool/5.8_ATS.md
+      - "5.9 Muud": 5_Norkvool/5.9_Muud.md
   - "6. Automaatika":
-      - "6.1 Automaatika": 6_Automaatika/6.1_Automaatika.md
-      - Automaatika ülevaade: 6_Automaatika/index.md
+      - "6.1 Ülevaade": 6_Automaatika/index.md
+      - "6.2 Üldnõuded ja standardid": 6_Automaatika/6.2_Yldnouded_ja_standardid.md
+      - "6.3 Seletuskiri": 6_Automaatika/6.3_Seletuskiri.md
+      - "6.4 Struktuurskeemid": 6_Automaatika/6.4_Struktuurskeemid.md
+      - "6.5 Tasapinnaplaanid": 6_Automaatika/6.5_Tasapinnaplaanid.md
+      - "6.6 Loetelud": 6_Automaatika/6.6_Loetelud.md
+      - "6.7 BIM nõuded": 6_Automaatika/6.7_BIM_Nouded.md
   - "7. BIM":
       - "7.1 Üldpõhimõtted ja Terminoloogia": 7_BIM/7.1_Üldpõhimõtted_ja_Terminoloogia.md
       - "7.2 Mudeli Detailsusaste (LOD) Staadiumite Kaupa": 7_BIM/7.2_Mudeli_Detailsusaste_LOD_Staadiumite_Kaupa.md
@@ -65,8 +77,17 @@ nav:
       - "7.4 Tarkvara ja Failivormingud (IFC jm)": 7_BIM/7.4_Tarkvara_ja_Failivormingud_IFC_jm.md
       - "7.5 Koostöö ja Koordineerimine Mudelis": 7_BIM/7.5_Koostöö_ja_Koordineerimine_Mudelis.md
       - "7.6 Mudelipõhised Väljundid": 7_BIM/7.6_Mudelipõhised_Väljundid.md
-  - "8. Kvaliteet": 8_Kvaliteet/index.md
-  - "9. Lisad": 9_Lisad/index.md
+  - "8. Kvaliteet":
+      - "8.1 Ülevaade": 8_Kvaliteet/index.md
+      - "8.2 Kontroll ja Testimine": 8_Kvaliteet/8.2_Kontroll_ja_Testimine.md
+      - "8.3 Dokumentatsioon": 8_Kvaliteet/8.3_Dokumentatsioon.md
+      - "8.4 Standardid ja Nõuded": 8_Kvaliteet/8.4_Standardid_ja_Nouded.md
+  - "9. Lisad":
+      - "9.1 Ülevaade": 9_Lisad/index.md
+      - "9.2 Viited": 9_Lisad/9.2_Viited.md
+      - "9.3 Sõnastik": 9_Lisad/9.3_Sonastik.md
+      - "9.4 Näited": 9_Lisad/9.4_Naited.md
+      - "9.5 Tabelid": 9_Lisad/9.5_Tabelid.md
 
 markdown_extensions:
   - toc:
@@ -76,6 +97,9 @@ markdown_extensions:
 
 plugins:
   - search
+  - print-site:
+      add_to_navigation: true
+      print_page_title: "Prindi kogu juhend PDF-iks"
 
 extra_css:
   - stylesheets/extra.css
