@@ -1,0 +1,9 @@
+plugins:
+  - search
+  - navigation.sections
+  - navigation.tabs
+  - mkdocs_macros
+  - git-revision-date-localized
+  - awesome-pages
+  - minify:
+      minify_html: true
