@@ -1,8 +1,14 @@
 site_name: Elektripaigaldiste Projekteerimise Juhend
 site_url: https://dmitrig372.github.io/ElektriJuhend/
+repo_url: https://github.com/dmitrig372/ElektriJuhend
+repo_name: dmitrig372/ElektriJuhend
+edit_uri: edit/main/docs/
+
 theme:
   name: material
   language: et
+  icon:
+    repo: fontawesome/brands/github
   palette:
     - scheme: default
       primary:
@@ -24,6 +30,9 @@ theme:
     - navigation.tabs
     - navigation.indexes
     - navigation.sections
+    - navigation.top
+    - navigation.footer
+    - navigation.repo
 
 nav:
   - "1. Sissejuhatus":
