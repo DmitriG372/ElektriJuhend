@@ -2,6 +2,27 @@
 
 See juhend on mõeldud elektripaigaldiste projekteerimise alustele ja parimatele praktikatele. Juhend sisaldab põhjalikku infot elektripaigaldiste projekteerimise erinevate aspektide kohta, alates sissejuhatusest kuni spetsiifiliste tehniliste detailideni.
 
+## 💬 Märkuste süsteem
+
+Juhendis on integreeritud interaktiivne märkuste süsteem, mis võimaldab kasutajatel:
+- ✏️ **Lisada märkuseid** - Vali tekst ja tee paremklõps
+- 👁️ **Vaadata märkuseid** - Kollaselt esile tõstetud tekstid
+- 📧 **Saata e-postiga** - Kogutud märkused saadetakse automaatselt
+- 🔄 **Redigeerida** - Muuda olemasolevaid märkuseid
+- 🗑️ **Kustutada** - Eemalda mittevajalikud märkused
+
+### Kuidas kasutada?
+
+1. Vali juhendis tekst, mille kohta soovid märkuse teha
+2. Tee **paremklõps** (right-click)
+3. Klõpsa "💬 Lisa märkus"
+4. Täida vorm (nimi ja märkus)
+5. Vajuta "💾 Salvesta märkus"
+
+Kõik märkused kuvatakse ekraani paremas ülanurgas 💬 nupu all. Info nupp (ℹ️) avab detailse juhendi.
+
+**Tähelepanu:** Märkused salvestatakse brauseri localStorage'is ja ei sünkroniseeru automaatselt. Saada märkused regulaarselt e-postiga!
+
 ## Sisukord
 
 1. [Sissejuhatus](docs/1_Sissejuhatus/index.md)
@@ -60,12 +81,30 @@ See juhend on mõeldud elektripaigaldiste projekteerimise alustele ja parimatele
    - Näited
    - Tabelid
 
+## Funktsioonid
+
+### 📚 Dokumentatsioon
+- 9 põhjalikku peatükki elektripaigaldiste projekteerimisest
+- GitHub Pages hosting automaatse CI/CD-ga
+- Material for MkDocs teema
+- Eestikeelne sisu
+
+### 💬 Interaktiivne märkuste süsteem
+- Teksti valimine ja märkuste lisamine
+- localStorage põhine salvestamine
+- E-posti integratsioon (mailto:)
+- Märkuste redigeerimine ja kustutamine
+- Pulseeriv info nupp kasutamise juhendiga
+- Badge märkuste arvu kuvamiseks
+- Hoiatus lehe sulgemisel kui märkused on saatmata
+
 ## Tehnilised nõuded
 
 - MkDocs Material teema
 - Python 3.8+
 - MkDocs 1.4.0+
-- mkdocs-print-site plugin
+- JavaScript (ES6+)
+- CSS3 (animatsioonid, flexbox)
 
 ## Paigaldus
 

@@ -62,15 +62,7 @@ nav:
       - Jõupaigaldised: 4_Tugevvool/4.6_Jõupaigaldis.md
       - Maandus ja piksekaitse: 4_Tugevvool/4.7_Maandus_piksekaitse.md
   - "5. Nõrkvool":
-      - "5.1 Ülevaade": 5_Norkvool/5.1_Norkvool.md
-      - "5.2 Üldnõuded ja standardid": 5_Norkvool/5.2_Yldnõuded_Standardid.md
-      - "5.3 Andmeside": 5_Norkvool/5.3_Andmeside.md
-      - "5.4 Sidevõrgud": 5_Norkvool/5.4_Sidevorgud.md
-      - "5.5 Antennisüsteemid": 5_Norkvool/5.5_Antennisysteemid.md
-      - "5.6 Helindussüsteemid": 5_Norkvool/5.6_Helindussysteemid.md
-      - "5.7 Turvasüsteemid": 5_Norkvool/5.7_Turvasüsteemid.md
-      - "5.8 ATS": 5_Norkvool/5.8_ATS.md
-      - "5.9 Muud": 5_Norkvool/5.9_Muud.md
+      - "5.1 Nõrkvoolupaigaldised (Väljatöötlemisel)": 5_Norkvool/5.1_Norkvool.md
   - "6. Automaatika":
       - "6.1 Ülevaade": 6_Automaatika/6.1_Automaatika.md
       - "6.2 Üldnõuded ja standardid": 6_Automaatika/6.2_Yldnouded_ja_standardid.md
@@ -80,12 +72,7 @@ nav:
       - "6.6 Loetelud": 6_Automaatika/6.6_Loetelud.md
       - "6.7 BIM nõuded": 6_Automaatika/6.7_BIM_Nouded.md
   - "7. BIM":
-      - "7.1 Üldpõhimõtted ja Terminoloogia": 7_BIM/7.1_Üldpõhimõtted_ja_Terminoloogia.md
-      - "7.2 Mudeli Detailsusaste (LOD) Staadiumite Kaupa": 7_BIM/7.2_Mudeli_Detailsusaste_LOD_Staadiumite_Kaupa.md
-      - "7.3 Modelleerimise Standardid": 7_BIM/7.3_Modelleerimise_Standardid.md
-      - "7.4 Tarkvara ja Failivormingud (IFC jm)": 7_BIM/7.4_Tarkvara_ja_Failivormingud_IFC_jm.md
-      - "7.5 Koostöö ja Koordineerimine Mudelis": 7_BIM/7.5_Koostöö_ja_Koordineerimine_Mudelis.md
-      - "7.6 Mudelipõhised Väljundid": 7_BIM/7.6_Mudelipõhised_Väljundid.md
+      - "7.1 BIM Nõuded Elektriprojekteerimises": 7_BIM/7.1_Üldpõhimõtted_ja_Terminoloogia.md
   - "8. Kvaliteet":
       - "8.1 Ülevaade": 8_Kvaliteet/index.md
       - "8.2 Kontroll ja Testimine": 8_Kvaliteet/8.2_Kontroll_ja_Testimine.md
@@ -106,12 +93,15 @@ markdown_extensions:
 
 plugins:
   - search
-  - print-site:
-      add_to_navigation: true
-      print_page_title: "Prindi kogu juhend PDF-iks"
+  # - print-site:
+  #     add_to_navigation: true
+  #     print_page_title: "Prindi kogu juhend PDF-iks"
 
 extra_css:
   - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/comments.js
 
 extra:
   version: "v1.0 – 15.04.2025"
