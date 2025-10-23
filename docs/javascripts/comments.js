@@ -93,19 +93,64 @@
             return;
         }
 
-        // Oota, et leht oleks valmis
+        // Oota, et leht oleks valmis - pikem timeout GitHub Pages jaoks
         setTimeout(() => {
             pageComments.forEach((comment, index) => {
                 console.log(`🔍 Otsin märkust ${index + 1}:`, comment.selectedText.substring(0, 30) + '...');
                 const element = findElementByXPath(comment.xpath);
                 if (element) {
-                    console.log('✅ Element leitud, highlightin...');
+                    console.log('✅ Element leitud:', element.tagName, element.className);
                     highlightText(element, comment);
                 } else {
                     console.warn('❌ Elementi ei leitud XPath:', comment.xpath);
+                    console.log('🔄 Proovin alternatiivset meetodit...');
+
+                    // Fallback: otsi tekstist otse
+                    findAndHighlightByText(comment);
                 }
             });
-        }, 100);
+        }, 500); // Pikem timeout
+    }
+
+    // Alternatiivne meetod: otsi teksti põhjal (kui XPath ei tööta)
+    function findAndHighlightByText(comment) {
+        try {
+            // Otsi kõigist article elementidest
+            const articles = document.querySelectorAll('article, .md-content, main, [role="main"]');
+
+            for (const article of articles) {
+                const walker = document.createTreeWalker(
+                    article,
+                    NodeFilter.SHOW_TEXT,
+                    {
+                        acceptNode: function(node) {
+                            // Ignoreeri script ja style elemente
+                            if (node.parentNode.tagName === 'SCRIPT' ||
+                                node.parentNode.tagName === 'STYLE' ||
+                                node.parentNode.classList.contains('comment-icon') ||
+                                node.parentNode.classList.contains('comment-highlight')) {
+                                return NodeFilter.FILTER_REJECT;
+                            }
+                            return NodeFilter.FILTER_ACCEPT;
+                        }
+                    },
+                    false
+                );
+
+                while (walker.nextNode()) {
+                    const node = walker.currentNode;
+                    if (node.textContent && node.textContent.includes(comment.selectedText)) {
+                        console.log('🎯 Leidsin teksti fallback meetodil!');
+                        highlightText(node.parentNode, comment);
+                        return;
+                    }
+                }
+            }
+
+            console.warn('⚠️ Teksti ei leitud ka fallback meetodil');
+        } catch (error) {
+            console.error('❌ Fallback error:', error);
+        }
     }
 
     // Leia element XPath järgi
@@ -120,34 +165,82 @@
 
     // Tõsta tekst esile ja lisa ikoon
     function highlightText(element, comment) {
-        if (!element || !element.textContent) return;
+        try {
+            if (!element) {
+                console.warn('Element puudub');
+                return;
+            }
 
-        const text = element.textContent;
-        const index = text.indexOf(comment.selectedText);
+            // Leia õige textNode mis sisaldab valitud teksti
+            const walker = document.createTreeWalker(
+                element,
+                NodeFilter.SHOW_TEXT,
+                null,
+                false
+            );
 
-        if (index === -1) return;
+            let textNode;
+            while (walker.nextNode()) {
+                const node = walker.currentNode;
+                if (node.textContent && node.textContent.includes(comment.selectedText)) {
+                    textNode = node;
+                    break;
+                }
+            }
 
-        const before = text.substring(0, index);
-        const selected = text.substring(index, index + comment.selectedText.length);
-        const after = text.substring(index + comment.selectedText.length);
+            if (!textNode) {
+                console.warn('TextNode ei leitud:', comment.selectedText.substring(0, 30));
+                return;
+            }
 
-        const highlightSpan = document.createElement('span');
-        highlightSpan.className = 'comment-highlight';
-        highlightSpan.textContent = selected;
+            const text = textNode.textContent;
+            const index = text.indexOf(comment.selectedText);
 
-        const icon = document.createElement('span');
-        icon.className = 'comment-icon';
-        icon.innerHTML = '💬';
-        icon.title = 'Vaata märkust';
-        icon.addEventListener('click', (e) => {
-            e.stopPropagation();
-            showCommentPopup(comment, e.pageX, e.pageY);
-        });
+            if (index === -1) {
+                console.warn('Teksti ei leitud:', comment.selectedText.substring(0, 30));
+                return;
+            }
 
-        element.textContent = before;
-        element.appendChild(highlightSpan);
-        element.appendChild(icon);
-        element.appendChild(document.createTextNode(after));
+            const before = text.substring(0, index);
+            const selected = text.substring(index, index + comment.selectedText.length);
+            const after = text.substring(index + comment.selectedText.length);
+
+            // Loo highlight element
+            const highlightSpan = document.createElement('span');
+            highlightSpan.className = 'comment-highlight';
+            highlightSpan.setAttribute('data-comment-id', comment.id);
+            highlightSpan.textContent = selected;
+
+            // Loo ikoon
+            const icon = document.createElement('span');
+            icon.className = 'comment-icon';
+            icon.setAttribute('data-comment-id', comment.id);
+            icon.innerHTML = '💬';
+            icon.title = 'Vaata märkust';
+            icon.addEventListener('click', (e) => {
+                e.stopPropagation();
+                showCommentPopup(comment, e.clientX, e.clientY);
+            });
+
+            // Asenda textNode uute elementidega
+            const parent = textNode.parentNode;
+            const fragment = document.createDocumentFragment();
+
+            if (before) {
+                fragment.appendChild(document.createTextNode(before));
+            }
+            fragment.appendChild(highlightSpan);
+            fragment.appendChild(icon);
+            if (after) {
+                fragment.appendChild(document.createTextNode(after));
+            }
+
+            parent.replaceChild(fragment, textNode);
+
+            console.log('✅ Highlight lisatud:', comment.selectedText.substring(0, 30) + '...');
+        } catch (error) {
+            console.error('❌ Highlight error:', error, comment);
+        }
     }
 
     // Näita märkuse popup
@@ -812,20 +905,58 @@ TEOSTAJA: ${author}
     if (typeof document$ !== 'undefined') {
         console.log('📡 MkDocs instant loading tuvasatud');
         document$.subscribe(function() {
-            console.log('📄 Leht muutus, laen märkused uuesti...');
+            console.log('📄 Leht muutus (document$), laen märkused uuesti...');
             setTimeout(() => {
                 loadAllComments();
-            }, 200);
+            }, 300);
         });
     }
+
+    // Kuula ka hashchange
+    window.addEventListener('hashchange', function() {
+        console.log('🔗 Hash muutus, renderin märkused uuesti...');
+        setTimeout(() => {
+            renderPageComments();
+        }, 300);
+    });
 
     // Kuula ka popstate (browseri tagasi/edasi nupud)
     window.addEventListener('popstate', function() {
         console.log('🔙 Popstate - laen märkused uuesti');
         setTimeout(() => {
             loadAllComments();
-        }, 200);
+        }, 300);
     });
+
+    // Mutation observer MkDocs'i sisu muutuste jaoks
+    const observeContentChanges = () => {
+        const targetNode = document.querySelector('.md-content');
+        if (!targetNode) {
+            console.warn('⚠️ .md-content ei leitud, observer ei tööta');
+            return;
+        }
+
+        const observer = new MutationObserver((mutations) => {
+            // Kontrolli, kas lisati uusi elemente
+            for (const mutation of mutations) {
+                if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+                    console.log('🔄 DOM muutus tuvastatud, renderin märkused...');
+                    setTimeout(() => renderPageComments(), 500);
+                    break;
+                }
+            }
+        });
+
+        observer.observe(targetNode, {
+            childList: true,
+            subtree: true
+        });
+
+        console.log('👁️ Mutation observer käivitatud');
+    };
+
+    // Käivita observer pärast init
+    setTimeout(() => observeContentChanges(), 1000);
 
     // Käivita kui leht on valmis
     if (document.readyState === 'loading') {
