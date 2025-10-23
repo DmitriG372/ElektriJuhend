@@ -115,41 +115,166 @@
     // Alternatiivne meetod: otsi teksti põhjal (kui XPath ei tööta)
     function findAndHighlightByText(comment) {
         try {
-            // Otsi kõigist article elementidest
-            const articles = document.querySelectorAll('article, .md-content, main, [role="main"]');
+            console.log('🔍 Fallback: Otsin teksti:', comment.selectedText);
 
-            for (const article of articles) {
-                const walker = document.createTreeWalker(
-                    article,
-                    NodeFilter.SHOW_TEXT,
-                    {
-                        acceptNode: function(node) {
-                            // Ignoreeri script ja style elemente
-                            if (node.parentNode.tagName === 'SCRIPT' ||
-                                node.parentNode.tagName === 'STYLE' ||
-                                node.parentNode.classList.contains('comment-icon') ||
-                                node.parentNode.classList.contains('comment-highlight')) {
-                                return NodeFilter.FILTER_REJECT;
-                            }
-                            return NodeFilter.FILTER_ACCEPT;
+            // Normaliseeri otsitav tekst (eemalda liigset whitespace'i)
+            const searchText = comment.selectedText.trim().replace(/\s+/g, ' ');
+
+            // Otsi kõigist võimalikest sisu konteinerist
+            const containers = document.querySelectorAll('article, .md-content, main, [role="main"], .md-typeset');
+
+            for (const container of containers) {
+                // Proovi leida lihtsalt innerHTML'ist
+                const html = container.innerHTML;
+                if (html.includes(searchText)) {
+                    console.log('📦 Container sisaldab teksti:', container.className || container.tagName);
+
+                    // Otsi kõiki paragraphe ja pealkirju
+                    const elements = container.querySelectorAll('p, h1, h2, h3, h4, h5, h6, li, td, th, span, div');
+
+                    for (const elem of elements) {
+                        // Ignoreeri juba märgistatud
+                        if (elem.classList.contains('comment-icon') ||
+                            elem.classList.contains('comment-highlight') ||
+                            elem.closest('.comment-icon') ||
+                            elem.closest('.comment-highlight')) {
+                            continue;
                         }
-                    },
-                    false
-                );
 
-                while (walker.nextNode()) {
-                    const node = walker.currentNode;
-                    if (node.textContent && node.textContent.includes(comment.selectedText)) {
-                        console.log('🎯 Leidsin teksti fallback meetodil!');
-                        highlightText(node.parentNode, comment);
-                        return;
+                        const elemText = elem.textContent.trim().replace(/\s+/g, ' ');
+
+                        if (elemText.includes(searchText)) {
+                            console.log('🎯 Leidsin elemendi:', elem.tagName, elemText.substring(0, 50) + '...');
+
+                            // Proovi highlight'ida
+                            if (highlightTextInElement(elem, comment)) {
+                                return;
+                            }
+                        }
                     }
                 }
             }
 
-            console.warn('⚠️ Teksti ei leitud ka fallback meetodil');
+            console.warn('⚠️ Teksti ei leitud ka fallback meetodil:', searchText);
         } catch (error) {
             console.error('❌ Fallback error:', error);
+        }
+    }
+
+    // Uus funktsioon: highlight konkreetses elemendis
+    function highlightTextInElement(element, comment) {
+        try {
+            const searchText = comment.selectedText.trim();
+
+            // Leia kõik textNode'd selles elemendis
+            const walker = document.createTreeWalker(
+                element,
+                NodeFilter.SHOW_TEXT,
+                null,
+                false
+            );
+
+            const textNodes = [];
+            while (walker.nextNode()) {
+                textNodes.push(walker.currentNode);
+            }
+
+            // Kombineeri kõik textNode'id
+            let combinedText = '';
+            let nodeMap = [];
+
+            for (const node of textNodes) {
+                const startPos = combinedText.length;
+                combinedText += node.textContent;
+                nodeMap.push({
+                    node: node,
+                    start: startPos,
+                    end: combinedText.length,
+                    text: node.textContent
+                });
+            }
+
+            // Leia otsitav tekst kombineeritud tekstist
+            const index = combinedText.indexOf(searchText);
+
+            if (index === -1) {
+                return false;
+            }
+
+            console.log('✨ Leitud positsioon:', index, 'tekstis');
+
+            // Leia millisesse node'sse tekst kuulub
+            for (let i = 0; i < nodeMap.length; i++) {
+                const map = nodeMap[i];
+
+                // Kas tekst algab selles node's?
+                if (index >= map.start && index < map.end) {
+                    const nodeStartIndex = index - map.start;
+                    const nodeEndIndex = nodeStartIndex + searchText.length;
+
+                    // Kui tekst on täielikult ühes node's
+                    if (nodeEndIndex <= map.text.length) {
+                        console.log('✅ Tekst on ühes node\'s, highlightin...');
+                        return insertHighlightInNode(map.node, nodeStartIndex, searchText.length, comment);
+                    }
+
+                    // Kui tekst ulatub üle mitme node'i - highlight ainult esimest
+                    console.log('⚠️ Tekst ulatub üle mitme node\'i, highlightin esimest osa');
+                    const partialLength = map.text.length - nodeStartIndex;
+                    return insertHighlightInNode(map.node, nodeStartIndex, partialLength, comment);
+                }
+            }
+
+            return false;
+        } catch (error) {
+            console.error('❌ highlightTextInElement error:', error);
+            return false;
+        }
+    }
+
+    // Sisesta highlight ja ikoon konkreetsesse textNode'i
+    function insertHighlightInNode(textNode, startIndex, length, comment) {
+        try {
+            const text = textNode.textContent;
+            const before = text.substring(0, startIndex);
+            const selected = text.substring(startIndex, startIndex + length);
+            const after = text.substring(startIndex + length);
+
+            console.log('🎨 Loon highlight:', { before: before.substring(0, 20), selected, after: after.substring(0, 20) });
+
+            // Loo highlight span
+            const highlightSpan = document.createElement('span');
+            highlightSpan.className = 'comment-highlight';
+            highlightSpan.setAttribute('data-comment-id', comment.id);
+            highlightSpan.textContent = selected;
+
+            // Loo ikoon
+            const icon = document.createElement('span');
+            icon.className = 'comment-icon';
+            icon.setAttribute('data-comment-id', comment.id);
+            icon.innerHTML = '💬';
+            icon.title = 'Vaata märkust';
+            icon.addEventListener('click', (e) => {
+                e.stopPropagation();
+                showCommentPopup(comment, e.clientX, e.clientY);
+            });
+
+            // Loo fragment
+            const fragment = document.createDocumentFragment();
+            if (before) fragment.appendChild(document.createTextNode(before));
+            fragment.appendChild(highlightSpan);
+            fragment.appendChild(icon);
+            if (after) fragment.appendChild(document.createTextNode(after));
+
+            // Asenda
+            const parent = textNode.parentNode;
+            parent.replaceChild(fragment, textNode);
+
+            console.log('✅ Highlight edukalt lisatud!');
+            return true;
+        } catch (error) {
+            console.error('❌ insertHighlightInNode error:', error);
+            return false;
         }
     }
 
