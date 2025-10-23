@@ -236,83 +236,61 @@
         }
     }
 
-    // Tõsta tekst esile ja lisa ikoon
+    // Tõsta tekst esile ja lisa ikoon (LIHTSUSTATUD innerHTML meetod)
     function highlightText(element, comment) {
         try {
             if (!element) {
                 console.warn('Element puudub');
-                return;
+                return false;
             }
 
-            // Leia õige textNode mis sisaldab valitud teksti
-            const walker = document.createTreeWalker(
-                element,
-                NodeFilter.SHOW_TEXT,
-                null,
-                false
-            );
+            const searchText = comment.selectedText.trim();
+            const elementText = element.textContent.trim();
 
-            let textNode;
-            while (walker.nextNode()) {
-                const node = walker.currentNode;
-                if (node.textContent && node.textContent.includes(comment.selectedText)) {
-                    textNode = node;
-                    break;
-                }
+            if (!elementText.includes(searchText)) {
+                console.warn('Element ei sisalda teksti:', searchText.substring(0, 30));
+                return false;
             }
 
-            if (!textNode) {
-                console.warn('TextNode ei leitud:', comment.selectedText.substring(0, 30));
-                return;
-            }
+            console.log('🎯 Element sisaldab teksti, kasutan innerHTML replace');
 
-            const text = textNode.textContent;
-            const index = text.indexOf(comment.selectedText);
+            // Escape special regex characters
+            const escapedText = searchText.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
-            if (index === -1) {
-                console.warn('Teksti ei leitud:', comment.selectedText.substring(0, 30));
-                return;
-            }
+            // Loo regex mis leiab teksti (case sensitive, ainult esimene match)
+            const regex = new RegExp(escapedText);
 
-            const before = text.substring(0, index);
-            const selected = text.substring(index, index + comment.selectedText.length);
-            const after = text.substring(index + comment.selectedText.length);
+            // Salvesta originaal HTML
+            const originalHTML = element.innerHTML;
 
-            // Loo highlight element
-            const highlightSpan = document.createElement('span');
-            highlightSpan.className = 'comment-highlight';
-            highlightSpan.setAttribute('data-comment-id', comment.id);
-            highlightSpan.textContent = selected;
-
-            // Loo ikoon
-            const icon = document.createElement('span');
-            icon.className = 'comment-icon';
-            icon.setAttribute('data-comment-id', comment.id);
-            icon.innerHTML = '💬';
-            icon.title = 'Vaata märkust';
-            icon.addEventListener('click', (e) => {
-                e.stopPropagation();
-                showCommentPopup(comment, e.clientX, e.clientY);
+            // Asenda esimene match
+            const newHTML = originalHTML.replace(regex, function(match) {
+                return `<span class="comment-highlight" data-comment-id="${comment.id}">${match}</span><span class="comment-icon" data-comment-id="${comment.id}" title="Vaata märkust">💬</span>`;
             });
 
-            // Asenda textNode uute elementidega
-            const parent = textNode.parentNode;
-            const fragment = document.createDocumentFragment();
+            if (newHTML !== originalHTML) {
+                element.innerHTML = newHTML;
 
-            if (before) {
-                fragment.appendChild(document.createTextNode(before));
+                // Lisa event listener ikoonile
+                setTimeout(() => {
+                    const icons = element.querySelectorAll(`.comment-icon[data-comment-id="${comment.id}"]`);
+                    icons.forEach(icon => {
+                        icon.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            showCommentPopup(comment, e.clientX, e.clientY);
+                        });
+                    });
+                }, 50);
+
+                console.log('✅ Highlight lisatud:', searchText.substring(0, 30) + '...');
+                return true;
+            } else {
+                console.warn('⚠️ HTML ei muutunud');
+                return false;
             }
-            fragment.appendChild(highlightSpan);
-            fragment.appendChild(icon);
-            if (after) {
-                fragment.appendChild(document.createTextNode(after));
-            }
-
-            parent.replaceChild(fragment, textNode);
-
-            console.log('✅ Highlight lisatud:', comment.selectedText.substring(0, 30) + '...');
         } catch (error) {
             console.error('❌ Highlight error:', error, comment);
+            return false;
         }
     }
 
