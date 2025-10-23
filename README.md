@@ -2,6 +2,24 @@
 
 See juhend on mõeldud elektripaigaldiste projekteerimise alustele ja parimatele praktikatele. Juhend sisaldab põhjalikku infot elektripaigaldiste projekteerimise erinevate aspektide kohta, alates sissejuhatusest kuni spetsiifiliste tehniliste detailideni.
 
+## 🆕 Viimased Uuendused
+
+**v1.2 (2025-10-23)**
+- 🐛 Parandatud lõpmatu tsükkel MutationObserver'is
+- ⚡ Optimeeritud highlight meetod (innerHTML.replace)
+- 🎯 Parem töökindlus GitHub Pages'is
+- 🔒 Re-entry kaitse ja debouncing
+
+**v1.1**
+- ✨ Märkuste redigeerimine ja kustutamine
+- 📋 Märkuste nimekiri ekspordi dialoogis
+- ℹ️ Pulseeriv info nupp juhendiga
+
+**v1.0**
+- 💬 Interaktiivne märkuste süsteem
+- 📧 E-posti integratsioon
+- 🎨 Material teema kujundus
+
 ## 💬 Märkuste süsteem
 
 Juhendis on integreeritud interaktiivne märkuste süsteem, mis võimaldab kasutajatel:
@@ -90,21 +108,35 @@ Kõik märkused kuvatakse ekraani paremas ülanurgas 💬 nupu all. Info nupp (�
 - Eestikeelne sisu
 
 ### 💬 Interaktiivne märkuste süsteem
-- Teksti valimine ja märkuste lisamine
-- localStorage põhine salvestamine
-- E-posti integratsioon (mailto:)
-- Märkuste redigeerimine ja kustutamine
-- Pulseeriv info nupp kasutamise juhendiga
-- Badge märkuste arvu kuvamiseks
-- Hoiatus lehe sulgemisel kui märkused on saatmata
+- **Teksti valimine ja märkuste lisamine** - Paremklõps valitud tekstil
+- **localStorage põhine salvestamine** - Märkused säilivad brauseris
+- **E-posti integratsioon** - Saada kõik märkused ühes e-kirjas (mailto:)
+- **Märkuste redigeerimine ja kustutamine** - Muuda või eemalda märkuseid
+- **Pulseeriv info nupp** - Kasutamise juhend alati kättesaadav (ℹ️)
+- **Badge märkuste arvuga** - Näitab kõigi lehekülgede märkusi (💬)
+- **Hoiatus lehe sulgemisel** - Kui märkused on saatmata
+- **Optimeeritud GitHub Pages jaoks** - Lihtsustatud innerHTML.replace() meetod
+- **Lõpmatu tsükli kaitse** - MutationObserver debouncing ja re-entry kaitse
 
 ## Tehnilised nõuded
 
-- MkDocs Material teema
+### Backend
 - Python 3.8+
 - MkDocs 1.4.0+
+- MkDocs Material teema
+
+### Frontend
 - JavaScript (ES6+)
-- CSS3 (animatsioonid, flexbox)
+  - localStorage API
+  - MutationObserver (DOM muutuste jälgimine)
+  - innerHTML.replace() (teksti highlight'imine)
+- CSS3
+  - Animatsioonid (@keyframes pulse)
+  - Flexbox layout
+  - Fixed positioning
+- HTML5
+  - Context menu events
+  - Range API (teksti valimine)
 
 ## Paigaldus
 
