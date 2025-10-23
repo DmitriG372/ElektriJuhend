@@ -67,6 +67,12 @@
 
     // Renderi ainult praeguse lehe märkused
     function renderPageComments() {
+        if (isRendering) {
+            console.log('⏸️ Juba renderin, skip...');
+            return;
+        }
+
+        isRendering = true;
         console.log('🎨 Renderdan märkuseid...');
 
         // Eemalda kõik vanad märgistused
@@ -90,6 +96,7 @@
 
         if (pageComments.length === 0) {
             console.log('⚠️ Sellel lehel pole märkuseid');
+            isRendering = false;
             return;
         }
 
@@ -109,6 +116,12 @@
                     findAndHighlightByText(comment);
                 }
             });
+
+            // Lõpeta renderimine
+            setTimeout(() => {
+                isRendering = false;
+                console.log('✅ Renderimine lõpetatud');
+            }, 100);
         }, 500); // Pikem timeout
     }
 
@@ -989,6 +1002,9 @@ TEOSTAJA: ${author}
     });
 
     // Mutation observer MkDocs'i sisu muutuste jaoks
+    let isRendering = false; // Flag et vältida lõpmatu tsüklit
+    let renderTimeout = null;
+
     const observeContentChanges = () => {
         const targetNode = document.querySelector('.md-content');
         if (!targetNode) {
@@ -997,12 +1013,41 @@ TEOSTAJA: ${author}
         }
 
         const observer = new MutationObserver((mutations) => {
-            // Kontrolli, kas lisati uusi elemente
+            // Ignoreeri kui me ise renderime
+            if (isRendering) {
+                return;
+            }
+
+            // Kontrolli, kas lisati uusi elemente (aga mitte meie poolt)
             for (const mutation of mutations) {
                 if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
-                    console.log('🔄 DOM muutus tuvastatud, renderin märkused...');
-                    setTimeout(() => renderPageComments(), 500);
-                    break;
+                    // Kontrolli, et ei ole meie enda loodud elemendid
+                    let hasCommentElements = false;
+                    for (const node of mutation.addedNodes) {
+                        if (node.nodeType === 1 &&
+                            (node.classList?.contains('comment-highlight') ||
+                             node.classList?.contains('comment-icon'))) {
+                            hasCommentElements = true;
+                            break;
+                        }
+                    }
+
+                    // Kui ei ole meie elemendid, siis renderi
+                    if (!hasCommentElements) {
+                        console.log('🔄 DOM muutus tuvastatud (mitte meie muutus)');
+
+                        // Debounce - oota 500ms enne renderimist
+                        if (renderTimeout) {
+                            clearTimeout(renderTimeout);
+                        }
+
+                        renderTimeout = setTimeout(() => {
+                            renderPageComments();
+                            renderTimeout = null;
+                        }, 500);
+
+                        break;
+                    }
                 }
             }
         });
@@ -1012,7 +1057,7 @@ TEOSTAJA: ${author}
             subtree: true
         });
 
-        console.log('👁️ Mutation observer käivitatud');
+        console.log('👁️ Mutation observer käivitatud (lõpmatu tsükli kaitsega)');
     };
 
     // Käivita observer pärast init
